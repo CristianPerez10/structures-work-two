@@ -8,4 +8,18 @@ public class Ubicacion {
         this.x = x;
         this.y = y;
     }
+
+    public int getX() {
+        return this.x;
+    };
+
+    public int getY() {
+        return this.y;
+    };
+
+    public double obtenerDistancia(Ubicacion punto) {
+        double distancia = Math.sqrt(Math.pow(this.x - punto.getX(), 2) + Math.pow(this.y - punto.getY(), 2));
+        return distancia;
+    };
 }
+// LAKERS IN FIVE
