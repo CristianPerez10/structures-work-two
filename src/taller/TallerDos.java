@@ -66,8 +66,24 @@ public class TallerDos {
         }
         return personas;
     }
-}
 
-// A la hora de hacer la grafica Jmay sugiere hacer una grafica en 2D para no
-// complicarnos. Entonces Dejamos el numero de estaciones constantes y vamos
-// variando las personas y el tiempo de ejecucion
+    public static long medirTiempo(int numPersonas, int numEstaciones, int k) {
+        TallerDos tallerDos = new TallerDos(numPersonas, numEstaciones);
+        long tiempoTotal = 0;
+
+        for (int i = 0; i < k; i++) {
+            long tiempoInicio = System.currentTimeMillis();
+            asignarEstaciones(tallerDos.personas, tallerDos.estaciones);
+            long tiempoFin = System.currentTimeMillis();
+            tiempoTotal += tiempoFin - tiempoInicio;
+        }
+
+        return tiempoTotal / k; // Tiempo promedio
+    }
+    	
+    public static void main(String[] args) {
+
+        long tiempoPromedio = medirTiempo(1000000, 30, 10);
+        System.out.println("Tiempo de ejecución promedio: " + tiempoPromedio + " milisegundos");
+    }
+}
